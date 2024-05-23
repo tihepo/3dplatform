@@ -15,8 +15,8 @@ var gravity = 0
 
 var previously_floored = false
 
-var jump_single = true
-var jump_double = true
+var jump_count = 0
+var jump_max = 3
 
 var coins = 0
 
@@ -55,7 +55,7 @@ func _physics_process(delta):
 	
 	# Falling/respawning
 	
-	if position.y < -10:
+	if position.y < -20:
 		get_tree().reload_current_scene()
 	
 	# Animation for scale (jumping and landing)
@@ -105,40 +105,32 @@ func handle_controls(delta):
 	# Jumping
 	
 	if Input.is_action_just_pressed("jump"):
-		
-		if jump_single or jump_double:
-			Audio.play("res://sounds/jump.ogg")
-		
-		if jump_double:
-			
-			gravity = -jump_strength
-			
-			jump_double = false
-			model.scale = Vector3(0.5, 1.5, 0.5)
-			
-		if(jump_single): jump()
+		jump()
 
 # Handle gravity
 
 func handle_gravity(delta):
 	
 	gravity += 25 * delta
-	
+
+	# landed
 	if gravity > 0 and is_on_floor():
-		
-		jump_single = true
+		jump_count = 0
 		gravity = 0
 
 # Jumping
 
 func jump():
-	
+	jump_count += 1
+	if jump_count > jump_max:
+		return # dont jump
+
+	Audio.play("res://sounds/jump.ogg")
 	gravity = -jump_strength
 	
 	model.scale = Vector3(0.5, 1.5, 0.5)
 	
-	jump_single = false;
-	jump_double = true;
+	collect_coin()
 
 # Collecting coins
 

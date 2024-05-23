@@ -11,11 +11,10 @@ sky_material = SubResource("ProceduralSkyMaterial_lg8b7")
 
 [resource]
 background_mode = 1
-background_color = Color(0.752941, 0.776471, 0.827451, 1)
 sky = SubResource("Sky_7bk1c")
 ambient_light_source = 2
-ambient_light_color = Color(0.662745, 0.694118, 0.772549, 1)
-ambient_light_energy = 1.15
+ambient_light_color = Color(0.87451, 0.635294, 0.458824, 1)
+ambient_light_energy = 0.05
 tonemap_mode = 2
 ssao_enabled = true
 ssao_radius = 0.45

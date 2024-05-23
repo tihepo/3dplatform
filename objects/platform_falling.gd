@@ -8,8 +8,8 @@ func _process(delta):
 	
 	position.y -= gravity * delta
 	
-	if position.y < -10:
-		queue_free() # Remove platform if below threshold
+#	if position.y < -20:
+#		queue_free() # Remove platform if below threshold
 	
 	if falling:
 		gravity += 0.25

@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1ub7rku88oa5"]
+[gd_scene load_steps=7 format=3 uid="uid://c1ub7rku88oa5"]
 
+[ext_resource type="Script" path="res://objects/sign.gd" id="1_e83wo"]
 [ext_resource type="CylinderMesh" uid="uid://toqjchbox634" path="res://objects/Stick.tres" id="1_mtf36"]
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="2_m3hgq"]
 
@@ -9,10 +10,13 @@ size = Vector3(0.7653, 0.877438, 0.0443578)
 [sub_resource type="BoxMesh" id="BoxMesh_lxd65"]
 size = Vector3(0.8, 0.4, 0.021)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_v1t6j"]
+
 [node name="Sign" type="StaticBody3D"]
+script = ExtResource("1_e83wo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0183336, 0.562469, 0.035341)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0183336, 0.613192, 0.0434426)
 shape = SubResource("BoxShape3D_yus6n")
 
 [node name="Stick" type="MeshInstance3D" parent="."]
@@ -27,3 +31,13 @@ mesh = SubResource("BoxMesh_lxd65")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0110633)
 text = "Hello"
 font = ExtResource("2_m3hgq")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.558454, 0.503063)
+shape = SubResource("SphereShape3D_v1t6j")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

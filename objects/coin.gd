@@ -4,15 +4,16 @@ var time := 0.0
 var grabbed := false
 
 # Collecting coins
-
 func _on_body_entered(body):
-	if body.has_method("collect_coin") and !grabbed:
+	if !grabbed:
 		
-		body.collect_coin()
+		Game.collect_coin()
+
+
 		
 		Audio.play("res://sounds/coin.ogg") # Play sound
 		
-		$Mesh.queue_free() # Make invisible
+		queue_free() # Remove from scene
 		$Particles.emitting = false # Stop emitting stars
 		
 		grabbed = true

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5ya87w6q5diw"]
+
+[ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="1_adpmg"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 387.0
+offset_top = 37.0
+offset_right = 853.0
+offset_bottom = 122.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_adpmg")
+theme_override_font_sizes/font_size = 31
+text = "Well done you made it to part 3"

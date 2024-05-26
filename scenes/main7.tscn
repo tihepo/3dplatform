@@ -1,0 +1,124 @@
+[gd_scene load_steps=15 format=3 uid="uid://b5sy1opinqx2p"]
+
+[ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="1_cca17"]
+[ext_resource type="Script" path="res://scripts/view.gd" id="2_w4wii"]
+[ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platform_grass_large_round.tscn" id="3_sjgsg"]
+[ext_resource type="PackedScene" uid="uid://dam4dpkogyuth" path="res://flag.tscn" id="4_gikwo"]
+[ext_resource type="PackedScene" uid="uid://chqbm31jb1utc" path="res://objects/Svamp.glb" id="5_a3264"]
+[ext_resource type="PackedScene" uid="uid://cnymdajj1vsqm" path="res://objects/platform.tscn" id="6_qr6oj"]
+[ext_resource type="Script" path="res://scripts/moving_platform.gd" id="7_tywxi"]
+[ext_resource type="PackedScene" uid="uid://c1ub7rku88oa5" path="res://objects/sign.tscn" id="8_8pffx"]
+[ext_resource type="PackedScene" uid="uid://dwdvym7ogwohg" path="res://scenes/menu_signs_w_why_is_it_not_going_away.tscn" id="9_kaqm6"]
+[ext_resource type="PackedScene" uid="uid://dfpisimsgf5ce" path="res://objects/coin.tscn" id="10_8naec"]
+[ext_resource type="PackedScene" uid="uid://c8up71en5djgm" path="res://objects/platform_falling.tscn" id="11_bghye"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lg8b7"]
+sky_horizon_color = Color(0.67451, 0.682353, 0.698039, 1)
+sky_curve = 0.0175
+ground_bottom_color = Color(1, 1, 1, 1)
+ground_curve = 0.171484
+
+[sub_resource type="Sky" id="Sky_7bk1c"]
+sky_material = SubResource("ProceduralSkyMaterial_lg8b7")
+
+[sub_resource type="Environment" id="Environment_x6tte"]
+background_mode = 1
+background_color = Color(0.00414709, 0.161294, 0.74607, 1)
+sky = SubResource("Sky_7bk1c")
+ambient_light_source = 2
+ambient_light_color = Color(0.87451, 0.635294, 0.458824, 1)
+ambient_light_energy = 0.05
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 0.45
+ssao_intensity = 1.0
+ssao_power = 15.0
+glow_enabled = true
+glow_levels/2 = 0.6
+glow_levels/3 = 0.6
+glow_levels/5 = 0.0
+glow_intensity = 2.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0084
+
+[node name="Main" type="Node3D"]
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_x6tte")
+
+[node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("1_cca17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173558, 0, -0.0245553)
+view = NodePath("../View")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425942, 1.13689, 0.475884)
+
+[node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(0.707107, -0.298836, 0.640856, 0, 0.906308, 0.422618, -0.707107, -0.298836, 0.640856, 0, 0, 0)
+script = ExtResource("2_w4wii")
+target = NodePath("../Player")
+
+[node name="Camera" type="Camera3D" parent="View"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-07, 0, -5.96046e-08, 1, -0.275017, 0.165034, 10.1541)
+current = true
+fov = 23.4993
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="platform-grass-large-round" parent="World" instance=ExtResource("3_sjgsg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0185328, -0.586596, -0.638477)
+
+[node name="platform-grass-large-round2" parent="World" instance=ExtResource("3_sjgsg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0522494, -0.586596, 24.1533)
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.422618, -0.694272, 0.582564, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, -1.80203, 0)
+visible = false
+shadow_enabled = true
+shadow_opacity = 0.75
+
+[node name="flag" parent="." instance=ExtResource("4_gikwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0986767, -0.0829285, 24.0539)
+load_scene = "res://scenes/main7.tscn"
+
+[node name="Svamp" parent="." instance=ExtResource("5_a3264")]
+transform = Transform3D(0.896834, 0.437559, 0.0650426, -0.39412, 0.857109, -0.331712, -0.200892, 0.271857, 0.941136, -1.81413, -0.167731, -1.64113)
+
+[node name="Svamp2" parent="." instance=ExtResource("5_a3264")]
+transform = Transform3D(0.731104, -0.621137, 0.28227, 0.323675, 0.67997, 0.657933, -0.600601, -0.389654, 0.698175, 1.77315, -0.167731, -1.7461)
+
+[node name="Svamp3" parent="." instance=ExtResource("5_a3264")]
+transform = Transform3D(0.97008, 0.228992, 0.080668, -0.141245, 0.802544, -0.579631, -0.19747, 0.550895, 0.810876, 1.05613, -0.167731, 1.23877)
+
+[node name="platform10" parent="." instance=ExtResource("6_qr6oj")]
+transform = Transform3D(-0.0735255, 0.3992, 0.913911, 0.0292967, 0.916861, -0.398131, -0.996863, -0.00249812, -0.0791078, 0.431134, -1.48993, 11.7758)
+script = ExtResource("7_tywxi")
+
+[node name="Sign" parent="." instance=ExtResource("8_8pffx")]
+transform = Transform3D(-0.292272, 0, 0.956335, 0, 1, 0, -0.956335, 0, -0.292272, -1.09507, -0.0865964, 0.860279)
+menu_scene = ExtResource("9_kaqm6")
+
+[node name="Text" parent="Sign/Stick/Plate" index="0"]
+transform = Transform3D(1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, 1, 0.0149427, 0.0140923, 0.0250845)
+text = "wha whats 
+happe ...
+"
+
+[node name="RequiredPickups" type="Node3D" parent="."]
+
+[node name="coin" parent="RequiredPickups" instance=ExtResource("10_8naec")]
+transform = Transform3D(0.0111699, 0, -0.999938, 0, 1, 0, 0.999938, 0, 0.0111699, 0.0457861, -0.188187, 0.640891)
+
+[node name="platform-falling" parent="." instance=ExtResource("11_bghye")]
+transform = Transform3D(0.920437, -0.390892, 0, 0.390892, 0.920437, 0, 0, 0, 1, 0.184514, -1.15402, 6.98682)
+
+[node name="platform-falling2" parent="." instance=ExtResource("11_bghye")]
+transform = Transform3D(0.826816, -0.562473, 0, 0.562473, 0.826816, 0, 0, 0, 1, 0.184514, -1.15402, 16.3273)
+
+[node name="platform-falling3" parent="." instance=ExtResource("11_bghye")]
+transform = Transform3D(0.93036, 0.366647, 0, -0.366647, 0.93036, 0, 0, 0, 1, -0.220505, -1.15402, 20.1505)
+
+[node name="platform2" parent="." instance=ExtResource("6_qr6oj")]
+transform = Transform3D(0.870167, 0.492758, 0, -0.492758, 0.870167, 0, 0, 0, 1, -0.152997, -0.308605, 2.72041)
+
+[editable path="Sign"]

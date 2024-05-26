@@ -1,31 +1,20 @@
-[gd_scene load_steps=20 format=3 uid="uid://bqqgyqafm7xwp"]
+[gd_scene load_steps=15 format=3 uid="uid://bqqgyqafm7xwp"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_ahusb"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_onms2"]
 [ext_resource type="Script" path="res://scripts/view.gd" id="5_bg0fr"]
 [ext_resource type="PackedScene" uid="uid://cnymdajj1vsqm" path="res://objects/platform.tscn" id="6_sdmev"]
 [ext_resource type="PackedScene" uid="uid://rjh4ifidqrfp" path="res://objects/platform_medium.tscn" id="7_ixpj3"]
-[ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platform_grass_large_round.tscn" id="8_4oh1e"]
 [ext_resource type="PackedScene" uid="uid://c8up71en5djgm" path="res://objects/platform_falling.tscn" id="9_2fnpo"]
 [ext_resource type="PackedScene" uid="uid://dfpisimsgf5ce" path="res://objects/coin.tscn" id="10_fwhys"]
 [ext_resource type="AudioStream" uid="uid://ng1ixi5fl3dp" path="res://sounds/funny-background-music-tropical-house-for-short-life-hack-and-vlog-163658.mp3" id="10_lp8bl"]
-[ext_resource type="Script" path="res://scripts/hud.gd" id="11_apvpm"]
 [ext_resource type="PackedScene" uid="uid://dam4dpkogyuth" path="res://flag.tscn" id="13_befdc"]
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="13_drtpy"]
-[ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="13_jfda3"]
 [ext_resource type="PackedScene" uid="uid://c1ub7rku88oa5" path="res://objects/sign.tscn" id="15_elrsn"]
+[ext_resource type="PackedScene" uid="uid://b03y8w5pqq0gp" path="res://scenes/menu_signs.tscn" id="16_q2tdo"]
 [ext_resource type="PackedScene" uid="uid://chqbm31jb1utc" path="res://objects/Svamp.glb" id="16_yebam"]
-[ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="17_tk810"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rjjvj"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_38ys3"]
-font = ExtResource("17_tk810")
-font_size = 48
-shadow_color = Color(0, 0, 0, 0.376471)
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="GDScript" id="GDScript_v2o2b"]
 
 [node name="Main" type="Node3D"]
 
@@ -124,123 +113,6 @@ transform = Transform3D(0.885448, 0.14535, -0.441424, 0.0404389, 0.922133, 0.384
 [node name="platform-falling4" parent="World" instance=ExtResource("9_2fnpo")]
 transform = Transform3D(0.754424, 0, -0.656388, -0.230666, 0.936219, -0.265117, 0.614523, 0.351417, 0.706306, 3.01434, -6.11802, 7.1472)
 
-[node name="platform-grass-large-round" parent="World" instance=ExtResource("8_4oh1e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4085, -8.15023, -0.662444)
-
-[node name="coin2" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3648, -7.18018, 1.00753)
-
-[node name="coin3" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3648, -7.18018, 0.00752592)
-
-[node name="coin34" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7032, -8.73056, -2.96569)
-visible = false
-
-[node name="coin35" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7032, -8.73056, -2.96569)
-visible = false
-
-[node name="coin36" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7032, -8.73056, -2.96569)
-visible = false
-
-[node name="coin37" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7032, -8.73056, -2.96569)
-visible = false
-
-[node name="coin38" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7032, -8.73056, -2.96569)
-visible = false
-
-[node name="coin39" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7032, -8.73056, -2.96569)
-visible = false
-
-[node name="coin40" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7032, -8.73056, -2.96569)
-visible = false
-
-[node name="coin41" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7032, -8.73056, -2.96569)
-visible = false
-
-[node name="coin42" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7032, -8.73056, -2.96569)
-visible = false
-
-[node name="coin17" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.563, -6.43783, 6.16885)
-
-[node name="coin18" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.03146, -5.59767, 7.51395)
-
-[node name="coin19" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.43814, -6.43806, 9.7581)
-
-[node name="coin20" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75443, -5.49864, 12.0671)
-
-[node name="coin21" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99131, -4.86874, 14.7795)
-
-[node name="coin22" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31787, -4.86874, 13.3699)
-
-[node name="coin23" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.435642, -4.14475, 11.6955)
-
-[node name="coin24" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.41068, -2.73712, 9.85435)
-
-[node name="coin25" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75168, -4.21079, 6.94474)
-
-[node name="coin26" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09747, -2.94195, 4.53634)
-
-[node name="coin27" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.34594, -2.94195, 2.52297)
-
-[node name="coin28" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.52296, -1.9947, -0.422719)
-
-[node name="coin29" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.54492, -0.859748, -2.70829)
-
-[node name="coin30" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23089, -0.859748, -3.96152)
-
-[node name="coin31" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61456, -0.859748, -6.28586)
-
-[node name="coin32" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(0.996408, -0.0846865, 0, 0.0846865, 0.996408, 0, 0, 0, 1, -0.475714, 0.249484, -8.53101)
-
-[node name="coin11" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0653882, -5.54762, 2.98526)
-
-[node name="coin12" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0653882, -4.54762, 2.98526)
-
-[node name="coin13" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0653882, -3.70403, 2.98526)
-
-[node name="coin14" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0653882, -2.70403, 2.98526)
-
-[node name="coin15" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0653882, -1.96998, 2.98526)
-
-[node name="coin16" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0653882, -0.969977, 2.98526)
-
-[node name="coin9" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60146, -6)
-
-[node name="coin4" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3648, -7.18018, -0.992474)
-
 [node name="cube8" parent="World" instance=ExtResource("13_drtpy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5495, -0.694618, -2.666)
 
@@ -267,8 +139,76 @@ transform = Transform3D(1.56209, -1.37982, 1.71508, 1.97375, 1.80907, -0.342241,
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World"]
 stream = ExtResource("10_lp8bl")
-volume_db = 24.0
+volume_db = -10.307
 autoplay = true
+
+[node name="RequiredPickups" type="Node3D" parent="World"]
+
+[node name="coin17" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.563, -6.43783, 6.16885)
+
+[node name="coin18" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.03146, -5.59767, 7.51395)
+
+[node name="coin19" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.43814, -6.43806, 9.7581)
+
+[node name="coin20" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.42129, -5.24708, 12.0671)
+
+[node name="coin21" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99131, -4.86874, 14.7795)
+
+[node name="coin22" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31787, -4.86874, 13.3699)
+
+[node name="coin23" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.435642, -4.14475, 11.6955)
+
+[node name="coin24" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.41068, -2.73712, 9.85435)
+
+[node name="coin25" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75168, -4.21079, 6.94474)
+
+[node name="coin26" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09747, -2.94195, 4.53634)
+
+[node name="coin27" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.34594, -2.94195, 2.52297)
+
+[node name="coin28" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.52296, -1.9947, -0.422719)
+
+[node name="coin29" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.54492, -0.859748, -2.70829)
+
+[node name="coin30" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23089, -0.859748, -3.96152)
+
+[node name="coin31" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61456, -0.859748, -6.28586)
+
+[node name="coin32" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(0.996408, -0.0846865, 0, 0.0846865, 0.996408, 0, 0, 0, 1, -0.475714, 0.249484, -8.53101)
+
+[node name="coin11" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0653882, -5.54762, 2.98526)
+
+[node name="coin12" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0653882, -4.54762, 2.98526)
+
+[node name="coin13" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0653882, -3.70403, 2.98526)
+
+[node name="coin14" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0653882, -2.70403, 2.98526)
+
+[node name="coin15" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0653882, -1.96998, 2.98526)
+
+[node name="coin16" parent="World/RequiredPickups" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0653882, -0.969977, 2.98526)
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.422618, -0.694272, 0.582564, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, -1.80203, 0)
@@ -276,39 +216,14 @@ visible = false
 shadow_enabled = true
 shadow_opacity = 0.75
 
-[node name="HUD" type="CanvasLayer" parent="."]
-script = ExtResource("11_apvpm")
-
-[node name="Icon" type="TextureRect" parent="HUD"]
-offset_left = 57.0
-offset_top = 67.0
-offset_right = 313.0
-offset_bottom = 323.0
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("13_jfda3")
-
-[node name="x" type="Label" parent="HUD"]
-offset_left = 112.0
-offset_top = 64.0
-offset_right = 144.0
-offset_bottom = 123.0
-text = "×"
-label_settings = SubResource("LabelSettings_38ys3")
-
-[node name="Coins" type="Label" parent="HUD"]
-offset_left = 144.0
-offset_top = 64.0
-offset_right = 368.0
-offset_bottom = 123.0
-text = "0"
-label_settings = SubResource("LabelSettings_38ys3")
-
-[node name="flag" parent="." instance=ExtResource("13_befdc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0986767, 2.23895, -6.26984)
-load_scene = "res://main2.tscn"
+[node name="flag" parent="." node_paths=PackedStringArray("required_pickups") instance=ExtResource("13_befdc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.872053, 1.74747, -5.95381)
+load_scene = "res://scenes/main2.tscn"
+required_pickups = NodePath("../World/RequiredPickups")
 
 [node name="Sign" parent="." instance=ExtResource("15_elrsn")]
 transform = Transform3D(0.0871558, 0, 0.996195, 0, 1, 0, -0.996195, 0, 0.0871558, -0.891782, -1.63712, 0.379842)
+menu_scene = ExtResource("16_q2tdo")
 
 [node name="Plate" parent="Sign/Stick" index="0"]
 transform = Transform3D(0.969818, 0.243818, 0.00264063, -0.243818, 0.969586, 0.0213313, 0.00264061, -0.0213313, 0.999769, -1.19209e-07, 0.308035, 0.032653)
@@ -321,11 +236,5 @@ font_size = 23
 
 [node name="Svamp" parent="." instance=ExtResource("16_yebam")]
 transform = Transform3D(1, -6.51926e-09, 2.98023e-08, 0, 0.989132, 0.147033, 1.49012e-08, -0.147033, 0.989132, -0.366611, -1.21897, -0.669233)
-
-[node name="Svamp2" parent="." instance=ExtResource("16_yebam")]
-transform = Transform3D(1.96624, 0, 0, 0, 4.33369, 0.276171, 0, -0.644197, 1.85788, 0.00742483, 1.99988, -6.00974)
-script = SubResource("GDScript_v2o2b")
-
-[connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
 
 [editable path="Sign"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn1wjheri33nc"]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_7fy1f"]
+[ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="2_b6kuk"]
+[ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="3_4yiq6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2yiqv"]
+font = ExtResource("3_4yiq6")
+font_size = 48
+shadow_color = Color(0, 0, 0, 0.376471)
+shadow_offset = Vector2(2, 2)
+
+[node name="Game" type="Node"]
+script = ExtResource("1_7fy1f")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Icon" type="TextureRect" parent="HUD"]
+offset_left = 57.0
+offset_top = 67.0
+offset_right = 313.0
+offset_bottom = 323.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_b6kuk")
+
+[node name="x" type="Label" parent="HUD"]
+offset_left = 112.0
+offset_top = 64.0
+offset_right = 144.0
+offset_bottom = 123.0
+text = "×"
+label_settings = SubResource("LabelSettings_2yiqv")
+
+[node name="Coins" type="Label" parent="HUD"]
+offset_left = 144.0
+offset_top = 64.0
+offset_right = 368.0
+offset_bottom = 123.0
+text = "0"
+label_settings = SubResource("LabelSettings_2yiqv")

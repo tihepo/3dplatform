@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-signal coin_collected
+
 
 @export_subgroup("Components")
 @export var view: Node3D
@@ -18,7 +18,7 @@ var previously_floored = false
 var jump_count = 0
 var jump_max = 3
 
-var coins = 0
+
 
 @onready var particles_trail = $ParticlesTrail
 @onready var sound_footsteps = $SoundFootsteps
@@ -130,12 +130,5 @@ func jump():
 	
 	model.scale = Vector3(0.5, 1.5, 0.5)
 	
-	collect_coin()
+	Game.collect_coin()
 
-# Collecting coins
-
-func collect_coin():
-	
-	coins += 1
-	
-	coin_collected.emit(coins)

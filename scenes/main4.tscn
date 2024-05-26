@@ -1,0 +1,110 @@
+[gd_scene load_steps=13 format=3 uid="uid://dnfyvj278tq0l"]
+
+[ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_nir6t"]
+[ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_kcwhr"]
+[ext_resource type="Script" path="res://scripts/view.gd" id="3_eitlw"]
+[ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platform_grass_large_round.tscn" id="4_twkvn"]
+[ext_resource type="PackedScene" uid="uid://dam4dpkogyuth" path="res://flag.tscn" id="5_yhxex"]
+[ext_resource type="PackedScene" uid="uid://chqbm31jb1utc" path="res://objects/Svamp.glb" id="6_nxvg6"]
+[ext_resource type="PackedScene" uid="uid://cnymdajj1vsqm" path="res://objects/platform.tscn" id="7_s1t8l"]
+[ext_resource type="Script" path="res://scripts/moving_platform.gd" id="8_wm0us"]
+[ext_resource type="PackedScene" uid="uid://c1ub7rku88oa5" path="res://objects/sign.tscn" id="9_rktiy"]
+[ext_resource type="PackedScene" uid="uid://cwck7ehkywgry" path="res://scenes/menu_signs_this_is_gonna_get_harder.tscn" id="10_evunp"]
+[ext_resource type="PackedScene" uid="uid://dfpisimsgf5ce" path="res://objects/coin.tscn" id="11_aett2"]
+[ext_resource type="PackedScene" uid="uid://c8up71en5djgm" path="res://objects/platform_falling.tscn" id="13_s04ls"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_nir6t")
+
+[node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("2_kcwhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+view = NodePath("../View")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425942, 1.13689, 0.475884)
+
+[node name="Player2" parent="." node_paths=PackedStringArray("view") instance=ExtResource("2_kcwhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17999, 0, 0)
+view = NodePath("../View")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Player2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425942, 1.13689, 0.475884)
+
+[node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(0.707107, -0.298836, 0.640856, 0, 0.906308, 0.422618, -0.707107, -0.298836, 0.640856, 0, 0, 0)
+script = ExtResource("3_eitlw")
+target = NodePath("../Player")
+
+[node name="Camera" type="Camera3D" parent="View"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.27826e-07, 0, 0, 1, -1.38676, -1.04712, 7.9816)
+current = true
+fov = 23.4993
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="platform-grass-large-round" parent="World" instance=ExtResource("4_twkvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0185328, -0.586596, -0.638477)
+
+[node name="platform-grass-large-round2" parent="World" instance=ExtResource("4_twkvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0522494, -0.586596, 24.1533)
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.422618, -0.694272, 0.582564, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, -1.80203, 0)
+visible = false
+shadow_enabled = true
+shadow_opacity = 0.75
+
+[node name="flag" parent="." instance=ExtResource("5_yhxex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0986767, -0.0829285, 24.0539)
+load_scene = "res://scenes/main5.tscn"
+
+[node name="Svamp" parent="." instance=ExtResource("6_nxvg6")]
+transform = Transform3D(0.896834, 0.437559, 0.0650426, -0.39412, 0.857109, -0.331712, -0.200892, 0.271857, 0.941136, -1.81413, -0.167731, -1.64113)
+
+[node name="Svamp2" parent="." instance=ExtResource("6_nxvg6")]
+transform = Transform3D(0.731104, -0.621137, 0.28227, 0.323675, 0.67997, 0.657933, -0.600601, -0.389654, 0.698175, 1.77315, -0.167731, -1.7461)
+
+[node name="Svamp3" parent="." instance=ExtResource("6_nxvg6")]
+transform = Transform3D(0.97008, 0.228992, 0.080668, -0.141245, 0.802544, -0.579631, -0.19747, 0.550895, 0.810876, 1.05613, -0.167731, 1.23877)
+
+[node name="platform6" parent="." instance=ExtResource("7_s1t8l")]
+transform = Transform3D(0.217168, 0.29387, 0.930848, -0.206502, 0.945855, -0.25043, -0.954041, -0.137836, 0.266094, 0.109488, -0.299957, 19.829)
+script = ExtResource("8_wm0us")
+
+[node name="platform10" parent="." instance=ExtResource("7_s1t8l")]
+transform = Transform3D(-0.078887, -0.0496297, 0.995647, -0.00641342, 0.998765, 0.0492769, -0.996863, -0.00249812, -0.0791078, 0.381197, -1.59471, 11.6626)
+script = ExtResource("8_wm0us")
+
+[node name="Sign" parent="." instance=ExtResource("9_rktiy")]
+transform = Transform3D(-0.292272, 0, 0.956335, 0, 1, 0, -0.956335, 0, -0.292272, -1.09507, -0.0865964, 0.860279)
+menu_scene = ExtResource("10_evunp")
+
+[node name="Text" parent="Sign/Stick/Plate" index="0"]
+transform = Transform3D(1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, 1, 0.0149427, 0.0140923, 0.0250845)
+text = "welcome to 
+part 4
+"
+
+[node name="RequiredPickups" type="Node3D" parent="."]
+
+[node name="coin" parent="RequiredPickups" instance=ExtResource("11_aett2")]
+transform = Transform3D(0.0111699, 0, -0.999938, 0, 1, 0, 0.999938, 0, 0.0111699, 0.0457861, -0.188187, 0.640891)
+
+[node name="platform-falling" parent="." instance=ExtResource("13_s04ls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.184514, -1.15402, 6.98682)
+
+[node name="platform-falling2" parent="." instance=ExtResource("13_s04ls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.184514, -1.15402, 16.3273)
+
+[node name="platform" parent="." instance=ExtResource("7_s1t8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81422, -0.21618, 2.59403)
+
+[node name="platform2" parent="." instance=ExtResource("7_s1t8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0733318, -0.521239, 2.59403)
+
+[node name="platform3" parent="." instance=ExtResource("7_s1t8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74733, -0.155723, 2.59403)
+
+[editable path="Sign"]

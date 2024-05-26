@@ -1,0 +1,287 @@
+[gd_scene load_steps=20 format=3 uid="uid://b1qu0q7g81yd3"]
+
+[ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_l7pot"]
+[ext_resource type="Script" path="res://scripts/view.gd" id="3_yhrwo"]
+[ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platform_grass_large_round.tscn" id="4_mhju6"]
+[ext_resource type="PackedScene" uid="uid://dam4dpkogyuth" path="res://flag.tscn" id="5_r51n3"]
+[ext_resource type="PackedScene" uid="uid://chqbm31jb1utc" path="res://objects/Svamp.glb" id="6_x3y4t"]
+[ext_resource type="PackedScene" uid="uid://cnymdajj1vsqm" path="res://objects/platform.tscn" id="7_hfea5"]
+[ext_resource type="Script" path="res://scripts/moving_platform.gd" id="8_e6qbp"]
+[ext_resource type="PackedScene" uid="uid://bdk4n6l31ibe0" path="res://scenes/menu_sign_wha_whats_happening.tscn" id="9_84hia"]
+[ext_resource type="PackedScene" uid="uid://c1ub7rku88oa5" path="res://objects/sign.tscn" id="9_ftcqh"]
+[ext_resource type="PackedScene" uid="uid://dfpisimsgf5ce" path="res://objects/coin.tscn" id="11_wpqry"]
+[ext_resource type="PackedScene" uid="uid://c8up71en5djgm" path="res://objects/platform_falling.tscn" id="12_kkq7e"]
+[ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="12_rtygb"]
+[ext_resource type="Texture2D" uid="uid://dg3yfjj1xg5yw" path="res://background/roring_lion_head_lowpoly.png" id="13_voa6r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lg8b7"]
+sky_horizon_color = Color(0.67451, 0.682353, 0.698039, 1)
+sky_curve = 0.0175
+ground_bottom_color = Color(1, 1, 1, 1)
+ground_curve = 0.171484
+
+[sub_resource type="Sky" id="Sky_7bk1c"]
+sky_material = SubResource("ProceduralSkyMaterial_lg8b7")
+
+[sub_resource type="Environment" id="Environment_x6tte"]
+background_mode = 1
+background_color = Color(4.9334e-07, 0, 0.300713, 1)
+sky = SubResource("Sky_7bk1c")
+ambient_light_source = 2
+ambient_light_color = Color(0.87451, 0.635294, 0.458824, 1)
+ambient_light_energy = 0.05
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 0.45
+ssao_intensity = 1.0
+ssao_power = 15.0
+glow_enabled = true
+glow_levels/2 = 0.6
+glow_levels/3 = 0.6
+glow_levels/5 = 0.0
+glow_intensity = 2.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="Animation" id="Animation_on2j3"]
+resource_name = "ColorAndFogShift"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Environment:environment:background_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(4.9334e-07, 0, 0.300713, 1), Color(0.00454056, 0.176599, 0.788331, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Environment:environment:volumetric_fog_density")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.6067, 0.0084]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Node2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprite3D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5.6, 7.2, 8.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0.423529, 0.627451, 0), Color(0, 0.423529, 0.627451, 1), Color(0, 0.423529, 0.627451, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sprite3D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(5.5, 7.2, 8.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(3, 3, 1.096), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_51piw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Environment:environment:background_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(4.9334e-07, 0, 0.300713, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Environment:environment:volumetric_fog_density")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Node2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprite3D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.423529, 0.627451, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sprite3D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3, 3, 1.096)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_de1oc"]
+_data = {
+"ColorAndFogShift": SubResource("Animation_on2j3"),
+"RESET": SubResource("Animation_51piw")
+}
+
+[node name="Main" type="Node3D"]
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_x6tte")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Player")
+libraries = {
+"": SubResource("AnimationLibrary_de1oc")
+}
+autoplay = "ColorAndFogShift"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.3426, 0.540438, 0.960024, -0.0419131, 2.94237, -0.213251, -2.68247, 0.22452, 0.483832, -17.5425, -6.17344, -17.542)
+modulate = Color(0, 0.423529, 0.627451, 1)
+texture = ExtResource("13_voa6r")
+
+[node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("2_l7pot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+view = NodePath("../View")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425942, 1.13689, 0.475884)
+
+[node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(0.707107, -0.298836, 0.640856, 0, 0.906308, 0.422618, -0.707107, -0.298836, 0.640856, 0, 0, 0)
+script = ExtResource("3_yhrwo")
+target = NodePath("../Player")
+
+[node name="Camera" type="Camera3D" parent="View"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.27826e-07, 0, 0, 1, -1.38676, -1.04712, 7.9816)
+current = true
+fov = 23.4993
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="platform-grass-large-round" parent="World" instance=ExtResource("4_mhju6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0185328, -0.586596, -0.638477)
+
+[node name="platform-grass-large-round2" parent="World" instance=ExtResource("4_mhju6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0522494, -0.586596, 24.1533)
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.422618, -0.694272, 0.582564, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, -1.80203, 0)
+visible = false
+shadow_enabled = true
+shadow_opacity = 0.75
+
+[node name="flag" parent="." instance=ExtResource("5_r51n3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0986767, -0.0829285, 24.0539)
+load_scene = "res://scenes/main7.tscn"
+
+[node name="Svamp" parent="." instance=ExtResource("6_x3y4t")]
+transform = Transform3D(0.896834, 0.437559, 0.0650426, -0.39412, 0.857109, -0.331712, -0.200892, 0.271857, 0.941136, -1.81413, -0.167731, -1.64113)
+
+[node name="Svamp2" parent="." instance=ExtResource("6_x3y4t")]
+transform = Transform3D(0.731104, -0.621137, 0.28227, 0.323675, 0.67997, 0.657933, -0.600601, -0.389654, 0.698175, 1.77315, -0.167731, -1.7461)
+
+[node name="Svamp3" parent="." instance=ExtResource("6_x3y4t")]
+transform = Transform3D(0.97008, 0.228992, 0.080668, -0.141245, 0.802544, -0.579631, -0.19747, 0.550895, 0.810876, 1.05613, -0.167731, 1.23877)
+
+[node name="platform10" parent="." instance=ExtResource("7_hfea5")]
+transform = Transform3D(-0.0735255, 0.3992, 0.913911, 0.0292967, 0.916861, -0.398131, -0.996863, -0.00249812, -0.0791078, 0.431134, -1.48993, 11.7758)
+script = ExtResource("8_e6qbp")
+
+[node name="Sign" parent="." instance=ExtResource("9_ftcqh")]
+transform = Transform3D(-0.292272, 0, 0.956335, 0, 1, 0, -0.956335, 0, -0.292272, -1.09507, -0.0865964, 0.860279)
+menu_scene = ExtResource("9_84hia")
+
+[node name="Text" parent="Sign/Stick/Plate" index="0"]
+transform = Transform3D(1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, 1, 0.0149427, 0.0140923, 0.0250845)
+text = "wha whats 
+happe ...
+"
+
+[node name="RequiredPickups" type="Node3D" parent="."]
+
+[node name="coin" parent="RequiredPickups" instance=ExtResource("11_wpqry")]
+transform = Transform3D(0.0111699, 0, -0.999938, 0, 1, 0, 0.999938, 0, 0.0111699, 0.0457861, -0.188187, 0.640891)
+
+[node name="platform-falling" parent="." instance=ExtResource("12_kkq7e")]
+transform = Transform3D(0.920437, -0.390892, 0, 0.390892, 0.920437, 0, 0, 0, 1, 0.184514, -1.15402, 6.98682)
+
+[node name="platform-falling2" parent="." instance=ExtResource("12_kkq7e")]
+transform = Transform3D(0.826816, -0.562473, 0, 0.562473, 0.826816, 0, 0, 0, 1, 0.184514, -1.15402, 16.3273)
+
+[node name="platform-falling3" parent="." instance=ExtResource("12_kkq7e")]
+transform = Transform3D(0.93036, 0.366647, 0, -0.366647, 0.93036, 0, 0, 0, 1, -0.220505, -1.15402, 20.1505)
+
+[node name="platform2" parent="." instance=ExtResource("7_hfea5")]
+transform = Transform3D(0.870167, 0.492758, 0, -0.492758, 0.870167, 0, 0, 0, 1, -0.152997, -0.308605, 2.72041)
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="Node2D"]
+offset_left = 346.0
+offset_top = 121.0
+offset_right = 874.0
+offset_bottom = 187.0
+theme_override_colors/font_color = Color(0.128695, 0.510472, 0.795392, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_rtygb")
+theme_override_font_sizes/font_size = 32
+text = "The moon shifts to a deep shade of blue"
+horizontal_alignment = 1
+
+[editable path="Sign"]

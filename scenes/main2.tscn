@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://b8ilvm68mxqdr"]
+
+[ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_hm45a"]
+[ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_rcb7b"]
+[ext_resource type="Script" path="res://scripts/view.gd" id="3_tiqs1"]
+[ext_resource type="PackedScene" uid="uid://cnymdajj1vsqm" path="res://objects/platform.tscn" id="4_5tj7w"]
+[ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platform_grass_large_round.tscn" id="7_ja2m6"]
+[ext_resource type="PackedScene" uid="uid://dfpisimsgf5ce" path="res://objects/coin.tscn" id="8_hrqlf"]
+[ext_resource type="PackedScene" uid="uid://qwmxjvghh8q" path="res://scenes/menu_signs_sub.tscn" id="11_v2bi3"]
+[ext_resource type="Script" path="res://scripts/moving_platform.gd" id="13_gv8gl"]
+[ext_resource type="PackedScene" uid="uid://dam4dpkogyuth" path="res://flag.tscn" id="14_b3fe6"]
+[ext_resource type="PackedScene" uid="uid://c1ub7rku88oa5" path="res://objects/sign.tscn" id="15_k810m"]
+[ext_resource type="PackedScene" uid="uid://chqbm31jb1utc" path="res://objects/Svamp.glb" id="16_51dyb"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_hm45a")
+
+[node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("2_rcb7b")]
+view = NodePath("../View")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425942, 1.13689, 0.475884)
+
+[node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(0.707107, -0.298836, 0.640856, 0, 0.906308, 0.422618, -0.707107, -0.298836, 0.640856, 0, 0, 0)
+script = ExtResource("3_tiqs1")
+target = NodePath("../Player")
+
+[node name="Camera" type="Camera3D" parent="View"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.27826e-07, 0, 0, 1, -1.38676, -1.04712, 7.9816)
+current = true
+fov = 23.4993
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="platform-grass-large-round" parent="World" instance=ExtResource("7_ja2m6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0185328, -0.586596, -0.638477)
+
+[node name="platform-grass-large-round2" parent="World" instance=ExtResource("7_ja2m6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.123884, -0.586596, 23.8439)
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.422618, -0.694272, 0.582564, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, -1.80203, 0)
+visible = false
+shadow_enabled = true
+shadow_opacity = 0.75
+
+[node name="flag" parent="." node_paths=PackedStringArray("required_pickups") instance=ExtResource("14_b3fe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.144716, -0.0926601, 23.9211)
+load_scene = "res://scenes/main3.tscn"
+required_pickups = NodePath("../RequiredPickups")
+
+[node name="Svamp" parent="." instance=ExtResource("16_51dyb")]
+transform = Transform3D(1, -6.51926e-09, 2.98023e-08, 0, 0.989132, 0.147033, 1.49012e-08, -0.147033, 0.989132, -1.81413, -0.167731, -0.669233)
+
+[node name="Svamp2" parent="." instance=ExtResource("16_51dyb")]
+transform = Transform3D(1, -6.51926e-09, 2.98023e-08, -8.09264e-09, 0.910403, -0.413724, 1.25122e-08, 0.413724, 0.910403, -0.768299, -0.167731, -1.96638)
+
+[node name="Svamp3" parent="." instance=ExtResource("16_51dyb")]
+transform = Transform3D(0.97008, 0.228992, 0.080668, -0.242785, 0.914968, 0.322319, 1.46299e-08, -0.33226, 0.943188, 1.40817, -0.167731, -0.613559)
+
+[node name="platform" parent="." instance=ExtResource("4_5tj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.109488, -0.299957, 3.38796)
+script = ExtResource("13_gv8gl")
+
+[node name="platform2" parent="." instance=ExtResource("4_5tj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.109488, -0.299957, 8.39845)
+script = ExtResource("13_gv8gl")
+
+[node name="platform3" parent="." instance=ExtResource("4_5tj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.109488, -0.299957, 13.7201)
+script = ExtResource("13_gv8gl")
+
+[node name="platform4" parent="." instance=ExtResource("4_5tj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.109488, -0.299957, 19.8042)
+script = ExtResource("13_gv8gl")
+
+[node name="Sign" parent="." instance=ExtResource("15_k810m")]
+transform = Transform3D(-0.292272, 0, 0.956335, 0, 1, 0, -0.956335, 0, -0.292272, -1.09507, -0.0865964, 0.860279)
+menu_scene = ExtResource("11_v2bi3")
+
+[node name="RequiredPickups" type="Node3D" parent="."]
+
+[node name="coin" parent="RequiredPickups" instance=ExtResource("8_hrqlf")]
+transform = Transform3D(0.0111699, 0, -0.999938, 0, 1, 0, 0.999938, 0, 0.0111699, 0.0457861, -0.188187, 0.640891)
+
+[node name="coin2" parent="RequiredPickups" instance=ExtResource("8_hrqlf")]
+transform = Transform3D(0.0111699, 0, -0.999938, 0, 1, 0, 0.999938, 0, 0.0111699, 0.0457861, 0.0947193, 3.43285)
+
+[node name="coin3" parent="RequiredPickups" instance=ExtResource("8_hrqlf")]
+transform = Transform3D(0.0111699, 0, -0.999938, 0, 1, 0, 0.999938, 0, 0.0111699, 0.0457861, 0.0947193, 8.64984)
+
+[node name="coin4" parent="RequiredPickups" instance=ExtResource("8_hrqlf")]
+transform = Transform3D(0.0111699, 0, -0.999938, 0, 1, 0, 0.999938, 0, 0.0111699, 0.0457861, 0.0947193, 13.778)
+
+[node name="coin5" parent="RequiredPickups" instance=ExtResource("8_hrqlf")]
+transform = Transform3D(0.0111699, 0, -0.999938, 0, 1, 0, 0.999938, 0, 0.0111699, 0.0457861, 0.0947193, 19.8895)
+
+[node name="coin6" parent="RequiredPickups" instance=ExtResource("8_hrqlf")]
+transform = Transform3D(0.0111699, 0, -0.999938, 0, 1, 0, 0.999938, 0, 0.0111699, 0.0457861, 0.0947193, 22.3467)
